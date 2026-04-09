@@ -3,13 +3,13 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Unity Web Player | ShapesPrototype</title>
+    <title>Unity Web Player | MazeMobile</title>
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
   </head>
   <body>
     <div id="unity-container" class="unity-desktop">
-      <canvas id="unity-canvas" width=960 height=560 tabindex="-1"></canvas>
+      <canvas id="unity-canvas" width=960 height=540 tabindex="-1"></canvas>
       <div id="unity-loading-bar">
         <div id="unity-logo"></div>
         <div id="unity-progress-bar-empty">
@@ -20,7 +20,7 @@
       <div id="unity-footer">
         <div id="unity-logo-title-footer"></div>
         <div id="unity-fullscreen-button"></div>
-        <div id="unity-build-title">ShapesPrototype</div>
+        <div id="unity-build-title">MazeMobile</div>
       </div>
     </div>
     <script>
@@ -52,16 +52,16 @@
       }
 
       var buildUrl = "Build";
-      var loaderUrl = buildUrl + "/Shapes.loader.js";
+      var loaderUrl = buildUrl + "/MazeHard.loader.js";
       var config = {
         arguments: [],
-        dataUrl: buildUrl + "/Shapes.data",
-        frameworkUrl: buildUrl + "/Shapes.framework.js",
-        codeUrl: buildUrl + "/Shapes.wasm",
+        dataUrl: buildUrl + "/MazeHard.data",
+        frameworkUrl: buildUrl + "/MazeHard.framework.js",
+        codeUrl: buildUrl + "/MazeHard.wasm",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "DefaultCompany",
-        productName: "ShapesPrototype",
-        productVersion: "1.0",
+        productName: "MazeMobile",
+        productVersion: "0.1.0",
         showBanner: unityShowBanner,
         // errorHandler: function(err, url, line) {
         //    alert("error " + err + " occurred at line " + line);
@@ -105,7 +105,7 @@
       } else {
         // Desktop style: Render the game canvas in a window that can be maximized to fullscreen:
         canvas.style.width = "960px";
-        canvas.style.height = "560px";
+        canvas.style.height = "540px";
       }
 
       document.querySelector("#unity-loading-bar").style.display = "block";

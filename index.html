@@ -3,7 +3,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Maze | v. 0.09</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <title>Maze | v. 0.10</title>
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
     <link rel="manifest" href="manifest.webmanifest">
@@ -24,9 +26,27 @@
     <script>
       window.addEventListener("load", function () {
         if ("serviceWorker" in navigator) {
-          navigator.serviceWorker.register("ServiceWorker.js");
+          navigator.serviceWorker.register("ServiceWorker.js", {
+            updateViaCache: "none",
+          });
         }
       });
+
+      // Eruda / console: forceReloadFresh() — сброс SW и Cache Storage, затем перезагрузка.
+      window.forceReloadFresh = function () {
+        if (!("serviceWorker" in navigator) || !("caches" in window)) {
+          location.reload();
+          return;
+        }
+        Promise.all([
+          caches.keys().then(function (keys) {
+            return Promise.all(keys.map(function (k) { return caches.delete(k); }));
+          }),
+          navigator.serviceWorker.getRegistrations().then(function (regs) {
+            return Promise.all(regs.map(function (r) { return r.unregister(); }));
+          }),
+        ]).then(function () { location.reload(); });
+      };
 
       var container = document.querySelector("#unity-container");
       var canvas = document.querySelector("#unity-canvas");

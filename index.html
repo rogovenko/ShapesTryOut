@@ -8,6 +8,16 @@
     <title>Maze</title>
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
+    <style>
+      #unity-version-label {
+        margin-top: 18px;
+        text-align: center;
+        font-family: system-ui, -apple-system, Segoe UI, sans-serif;
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.55);
+        letter-spacing: 0.03em;
+      }
+    </style>
     <link rel="manifest" href="manifest.webmanifest">
   </head>
   <body>
@@ -49,7 +59,7 @@
         ]).then(function () { location.reload(); });
       };
 
-      var APP_VERSION = "0.12";
+      var APP_VERSION = "0.13";
       document.title = "Maze | v. " + APP_VERSION;
 
       var container = document.querySelector("#unity-container");

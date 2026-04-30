@@ -26,13 +26,8 @@ self.addEventListener('fetch', function (e) {
 
       response = await fetch(e.request);
       const cache = await caches.open(cacheName);
-      try {
-        var _swUrl = new URL(e.request.url);
-        if (_swUrl.protocol === 'http:' || _swUrl.protocol === 'https:') {
-          console.log(`[Service Worker] Caching new resource: ${e.request.url}`);
-          await cache.put(e.request, response.clone());
-        }
-      } catch (_swCacheFix) { /* unsupported scheme e.g. chrome-extension, blob */ }
+      console.log(`[Service Worker] Caching new resource: ${e.request.url}`);
+      cache.put(e.request, response.clone());
       return response;
     })());
 });
